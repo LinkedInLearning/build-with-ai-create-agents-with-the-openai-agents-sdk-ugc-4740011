@@ -1,0 +1,37 @@
+{
+  "name": "LinkedIn Learning Codespaces Python",
+  "image": "mcr.microsoft.com/devcontainers/python:dev-3.13-bullseye",
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "README.md"
+      ]
+    },
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "linkedinlearning.linkedinlearning-vscode-theme",
+        "ms-toolsai.jupyter",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.vscode-jupyter-slideshow"
+        // Additional Extensions Here
+      ]
+    }
+  },
+  // Update welcome text and set terminal prompt to '$ '
+  "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
+  // Install dependencies from requirements.txt
+  "postCreateCommand": "pip install --user -r requirements.txt",
+  // Pull all branches
+  "postAttachCommand": "git pull --all"
+}
+// DevContainer Reference: https://code.visualstudio.com/docs/remote/devcontainerjson-reference

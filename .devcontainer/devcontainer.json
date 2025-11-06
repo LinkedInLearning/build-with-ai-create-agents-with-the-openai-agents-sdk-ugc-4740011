@@ -1,0 +1,29 @@
+{
+  "name": "LinkedIn Learning Codespaces Generic",
+  // Optional: Specify image. See https://github.com/devcontainers/images/tree/main/src
+  "features": {},
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        // Always open README.md on load. - DO NOT REMOVE
+        "README.md"
+      ]
+    },
+    "vscode": {
+      // Set *default* container-specific settings.json values on container create. - DO NOT REMOVE
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        // LinkedIn Learning Theme - DO NOT REMOVE
+        "linkedinlearning.linkedinlearning-vscode-theme"
+        // Additional Extensions Here
+      ]
+    }
+  },
+  // Pull all branches - DO NOT REMOVE
+  "postAttachCommand": "git pull --all"
+}
+
+// DevContainer Reference: https://containers.dev/implementors/json_reference/
