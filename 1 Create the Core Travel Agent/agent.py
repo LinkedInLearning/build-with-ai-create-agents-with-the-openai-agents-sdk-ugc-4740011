@@ -8,11 +8,12 @@ Prereqs:
 """
 import os
 import asyncio
+import json
 
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
 from agents import Agent, Runner, ModelSettings
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 # read local .env file
 _ = load_dotenv(find_dotenv()) 
@@ -45,6 +46,18 @@ travel_agent = Agent(
           extra_body={"text":{"verbosity":"low"}}  # low | medium | high
     )
 )
+
+# --- Pretty print helper ----------------------------------------------------
+def print_fields(data):
+    if isinstance(data, str):
+        try:
+            data = TravelOutput(**json.loads(data))
+        except (json.JSONDecodeError, ValidationError) as e:
+            print("Raw output:", data)
+            return
+    print(f"Destination: {data.destination}")
+    print(f"Duration: {data.duration}")
+    print(f"Summary: {data.summary}")
 
 async def main():
     try:

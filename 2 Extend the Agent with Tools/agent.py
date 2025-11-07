@@ -50,6 +50,18 @@ travel_agent = Agent(
     ],
 )
 
+# --- Pretty print helper ----------------------------------------------------
+def print_fields(data):
+    if isinstance(data, str):
+        try:
+            data = TravelOutput(**json.loads(data))
+        except (json.JSONDecodeError, ValidationError) as e:
+            print("Raw output:", data)
+            return
+    print(f"Destination: {data.destination}")
+    print(f"Duration: {data.duration}")
+    print(f"Summary: {data.summary}")
+
 async def main():
     try:
         result = await Runner.run(travel_agent, "Plan a 3-day trip to Jamaica under $1500. " \
