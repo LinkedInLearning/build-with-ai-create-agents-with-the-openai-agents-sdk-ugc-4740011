@@ -8,11 +8,12 @@ Prereqs:
 """
 import os
 import asyncio
+import json
 
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
 from agents import Agent, Runner, ModelSettings, WebSearchTool
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 # read local .env file
 _ = load_dotenv(find_dotenv()) 
@@ -141,7 +142,7 @@ async def main():
                                                 I'd like to get an idea of flight ticket prices and some well-located hotels.     
                                                 I'm also a big foodie, so any recommendations for great local restaurants would be fantastic! 
                                                 Do not ask follow-up questions.''')
-        print(result.final_output)
+        print_fields(result.final_output)
     except Exception as e:
         print("Error", e)
 

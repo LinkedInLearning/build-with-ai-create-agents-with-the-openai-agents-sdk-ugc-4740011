@@ -8,6 +8,7 @@ Prereqs:
 """
 import os
 import asyncio
+import json
 
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
@@ -20,7 +21,7 @@ from agents import (Agent,
                     InputGuardrailTripwireTriggered,
                     Runner
                     )
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 # read local .env file
 _ = load_dotenv(find_dotenv()) 
@@ -179,7 +180,7 @@ async def main():
                                                 I'm also a big foodie, so any recommendations for great local restaurants would be fantastic! 
                                                 Do not ask follow-up questions.
                                                 My budget is limited to $100.''')
-        print(result.final_output)
+        print_fields(result.final_output)
     except InputGuardrailTripwireTriggered as e:
         print("\nGuardrail blocked this budget: ", e)
     except Exception as e:

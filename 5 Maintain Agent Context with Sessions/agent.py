@@ -8,6 +8,7 @@ Prereqs:
 """
 import os
 import asyncio
+import json
 
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
@@ -21,7 +22,7 @@ from agents import (Agent,
                     Runner,
                     SQLiteSession
                     )
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 # read local .env file
 _ = load_dotenv(find_dotenv()) 
@@ -184,7 +185,7 @@ async def main():
                My budget is about $3,000. Do not ask follow-up questions.''',
             session=session
         )
-        print(result.final_output)  
+        print_fields(result.final_output)  
         print("==================NEXT RUN=======================")
 
         # Second turn - agent automatically remembers previous context
@@ -193,7 +194,7 @@ async def main():
             "I actually think I'd like to go to the Bahamas instead. My budget is still the same.",
             session=session
         )
-        print(result.final_output)  
+        print_fields(result.final_output)  
     except InputGuardrailTripwireTriggered as e:
         print("\nGuardrail blocked this budget: ", e)
     except Exception as e:

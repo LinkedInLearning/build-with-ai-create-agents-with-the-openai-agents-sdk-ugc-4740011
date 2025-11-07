@@ -8,11 +8,12 @@ Prereqs:
 """
 import os
 import asyncio
+import json
 
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
 from agents import Agent, Runner, ModelSettings, WebSearchTool
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 # read local .env file
 _ = load_dotenv(find_dotenv()) 
@@ -66,7 +67,7 @@ async def main():
     try:
         result = await Runner.run(travel_agent, "Plan a 3-day trip to Jamaica under $1500. " \
                                                 "Find uncommon places that are off the beaten path and little known.")
-        print(result.final_output)
+        print_fields(result.final_output)
     except Exception as e:
         print("Error", e)
 
