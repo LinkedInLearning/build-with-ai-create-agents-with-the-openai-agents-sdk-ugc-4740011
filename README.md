@@ -1,7 +1,7 @@
 # Build with AI: Create Agents with the OpenAI Agents SDK
 This repository contains the Python code examples from the LinkedIn Learning course **Build with AI: Create Agents with the OpenAI Agents SDK**. The full course can be found on [LinkedIn Learning](https://www.linkedin.com/learning/build-with-ai-create-agents-with-the-openai-agents-sdk/).
 
-![Build with AI: Create Agents with the OpenAI Agents SDK]([https://github.com/keshawillz/build-with-ai-creating-ai-agents-with-gpt-5/blob/main/course_image.png](https://github.com/LinkedInLearning/build-with-ai-create-agents-with-the-openai-agents-sdk-ugc-4740011/blob/main/course_image.png))
+![Build with AI: Create Agents with the OpenAI Agents SDK](https://github.com/LinkedInLearning/build-with-ai-create-agents-with-the-openai-agents-sdk-ugc-4740011/blob/main/course_image.png)
 
 You’ll learn how to:
 - Build and configure an AI travel agent using the OpenAI Agents SDK in Python.
